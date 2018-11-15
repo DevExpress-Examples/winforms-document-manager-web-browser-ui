@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* **[Form1.cs](./CS/Form1.cs) (VB: [Form1.vb](./VB/Form1.vb))**
+* [MyBrowser.cs](./CS/MyBrowser.cs) (VB: [MyBrowser.vb](./VB/MyBrowser.vb))
+<!-- default file list end -->
 # How to create tabs with a browser-like functionality using DocumentManager.
 
 
