@@ -24,4 +24,4 @@ This example demonstrates how to use this feature to create a web browser UI:
 
 ## Documentation
 
-* [Application UI Manager](docs.devexpress.com/WindowsForms/11359/controls-and-libraries/application-ui-manager)
+* [Application UI Manager](https://docs.devexpress.com/WindowsForms/11359/controls-and-libraries/application-ui-manager)
