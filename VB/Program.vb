@@ -1,4 +1,6 @@
 Imports System
+Imports System.Collections.Generic
+Imports System.Linq
 Imports System.Windows.Forms
 
 Namespace ChildStandaloneForm
@@ -10,10 +12,10 @@ Namespace ChildStandaloneForm
         ''' </summary>
         <STAThread>
         Sub Main()
-            Call Application.EnableVisualStyles()
+            Application.EnableVisualStyles()
             Application.SetCompatibleTextRenderingDefault(False)
             DevExpress.Skins.SkinManager.EnableFormSkins()
-            Call Application.Run(New Form1())
+            Application.Run(New Form1())
         End Sub
     End Module
 End Namespace

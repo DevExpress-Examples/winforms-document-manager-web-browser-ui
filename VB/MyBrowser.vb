@@ -1,6 +1,10 @@
 Imports System
+Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Drawing
+Imports System.Data
+Imports System.Linq
+Imports System.Text
 Imports System.Windows.Forms
 
 Namespace ChildStandaloneForm
@@ -15,10 +19,10 @@ Namespace ChildStandaloneForm
         Public Sub New()
             InitializeComponent()
             SubscribeWebBrowserEvents()
-            LoadNewDocument(startPage)
-            AddHandler buttonEdit1.KeyDown, New KeyEventHandler(AddressOf buttonEdit1_KeyDown)
-            AddHandler Resize, New EventHandler(AddressOf MyBrowser_Resize)
-            AddHandler Disposed, New EventHandler(AddressOf MyBrowser_Disposed)
+            Me.LoadNewDocument(startPage)
+            buttonEdit1.KeyDown += New KeyEventHandler(AddressOf buttonEdit1_KeyDown)
+            Me.Resize += New EventHandler(AddressOf MyBrowser_Resize)
+            Me.Disposed += New EventHandler(AddressOf MyBrowser_Disposed)
         End Sub
 
         Private Sub MyBrowser_Disposed(ByVal sender As Object, ByVal e As EventArgs)
@@ -26,18 +30,18 @@ Namespace ChildStandaloneForm
         End Sub
 
         Private Sub MyBrowser_Resize(ByVal sender As Object, ByVal e As EventArgs)
-            webBrowser1.Width = Width - 6
-            webBrowser1.Height = Height - topIndent
+            webBrowser1.Width = Me.Width - 6
+            webBrowser1.Height = Me.Height - topIndent
         End Sub
 
         Private Sub buttonEdit1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
-            If e.KeyCode = Keys.Enter Then LoadNewDocument(buttonEdit1.Text)
+            If e.KeyCode Is Keys.Enter Then LoadNewDocument(buttonEdit1.Text)
         End Sub
 
         Private Sub SubscribeWebBrowserEvents()
-            AddHandler webBrowser1.DocumentTitleChanged, New EventHandler(AddressOf webBrowser1_DocumentTitleChanged)
-            AddHandler webBrowser1.CanGoBackChanged, New EventHandler(AddressOf webBrowser1_CanGoBackChanged)
-            AddHandler webBrowser1.CanGoForwardChanged, New EventHandler(AddressOf webBrowser1_CanGoForwardChanged)
+            webBrowser1.DocumentTitleChanged += New EventHandler(AddressOf webBrowser1_DocumentTitleChanged)
+            webBrowser1.CanGoBackChanged += New EventHandler(AddressOf webBrowser1_CanGoBackChanged)
+            webBrowser1.CanGoForwardChanged += New EventHandler(AddressOf webBrowser1_CanGoForwardChanged)
         End Sub
 
         Private Sub webBrowser1_CanGoForwardChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -65,7 +69,7 @@ Namespace ChildStandaloneForm
         Public Event TitleChanged As EventHandler
 
         Protected Overridable Sub OnTitleChangedEvent()
-            RaiseEvent TitleChanged(Me, EventArgs.Empty)
+            RaiseEvent TitleChangedEvent(Me, EventArgs.Empty)
         End Sub
 
         Private Sub SetTitle(ByVal s As String)
@@ -74,7 +78,7 @@ Namespace ChildStandaloneForm
         End Sub
 
         Private Sub LoadNewDocument(ByVal address As String)
-            If String.IsNullOrEmpty(address) Then Return
+            If [String].IsNullOrEmpty(address) Then Return
             If address.Equals("about:blank") Then Return
             If Not address.StartsWith("http://") AndAlso Not address.StartsWith("https://") Then
                 address = "http://" & address
@@ -83,7 +87,7 @@ Namespace ChildStandaloneForm
             Try
                 webBrowser1.Navigate(New Uri(address))
                 buttonEdit1.Text = address
-            Catch __unusedUriFormatException1__ As UriFormatException
+            Catch __unusedUriFormatException1__ As System.UriFormatException
                 Return
             End Try
         End Sub

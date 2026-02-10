@@ -49,7 +49,7 @@ Namespace ChildStandaloneForm
             Me.buttonEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Global.ChildStandaloneForm.Properties.Resources.search, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", Nothing, Nothing, True)})
             Me.buttonEdit1.Size = New System.Drawing.Size(554, 21)
             Me.buttonEdit1.TabIndex = 1
-            AddHandler Me.buttonEdit1.ButtonClick, New DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(AddressOf Me.buttonEdit1_ButtonClick)
+            Me.buttonEdit1.ButtonClick += New DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(AddressOf Me.buttonEdit1_ButtonClick)
             ' 
             ' simpleButton1
             ' 
@@ -58,7 +58,7 @@ Namespace ChildStandaloneForm
             Me.simpleButton1.Name = "simpleButton1"
             Me.simpleButton1.Size = New System.Drawing.Size(23, 22)
             Me.simpleButton1.TabIndex = 4
-            AddHandler Me.simpleButton1.Click, New System.EventHandler(AddressOf Me.simpleButton1_Click_1)
+            Me.simpleButton1.Click += New System.EventHandler(AddressOf Me.simpleButton1_Click_1)
             ' 
             ' btnForward
             ' 
@@ -68,7 +68,7 @@ Namespace ChildStandaloneForm
             Me.btnForward.Name = "btnForward"
             Me.btnForward.Size = New System.Drawing.Size(23, 22)
             Me.btnForward.TabIndex = 3
-            AddHandler Me.btnForward.Click, New System.EventHandler(AddressOf Me.simpleButton2_Click)
+            Me.btnForward.Click += New System.EventHandler(AddressOf Me.simpleButton2_Click)
             ' 
             ' btnBack
             ' 
@@ -78,7 +78,7 @@ Namespace ChildStandaloneForm
             Me.btnBack.Name = "btnBack"
             Me.btnBack.Size = New System.Drawing.Size(23, 22)
             Me.btnBack.TabIndex = 2
-            AddHandler Me.btnBack.Click, New System.EventHandler(AddressOf Me.simpleButton1_Click)
+            Me.btnBack.Click += New System.EventHandler(AddressOf Me.simpleButton1_Click)
             ' 
             ' MyBrowser
             ' 
