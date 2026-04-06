@@ -14,7 +14,7 @@ The WinForms Document Manager allows you to select the type of a container for d
 
 This example demonstrates how to use this feature to create a web browser UI:
 
-![WinForms Document Manager - Create a web browser UI](https://raw.githubusercontent.com/DevExpress-Examples/how-to-create-tabs-with-a-browser-like-functionality-using-documentmanager-e4337/12.1.8%2B/media/winforms-documant-manager-browser-ui.png)
+![WinForms Document Manager - Create a web browser UI](media/winforms-documant-manager-browser-ui.png)
 
 
 ## Files to Review
