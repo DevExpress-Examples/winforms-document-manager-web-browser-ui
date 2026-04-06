@@ -55,7 +55,7 @@ Namespace ChildStandaloneForm
             ' 
             Me.tabbedView1.DocumentGroups.AddRange(New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup() {Me.documentGroup1})
             Me.tabbedView1.Documents.AddRange(New DevExpress.XtraBars.Docking2010.Views.BaseDocument() {Me.document1, Me.document2, Me.document3, Me.document4, Me.document5})
-            AddHandler Me.tabbedView1.QueryControl, New DevExpress.XtraBars.Docking2010.Views.QueryControlEventHandler(AddressOf Me.tabbedView1_QueryControl)
+            Me.tabbedView1.QueryControl += New DevExpress.XtraBars.Docking2010.Views.QueryControlEventHandler(AddressOf Me.tabbedView1_QueryControl)
             ' 
             ' documentGroup1
             ' 

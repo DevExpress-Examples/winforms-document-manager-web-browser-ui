@@ -1,10 +1,17 @@
 Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
+Imports System.Data
 Imports System.Drawing
+Imports System.Linq
+Imports System.Text
 Imports System.Windows.Forms
+Imports System.Reflection
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraBars.Docking2010.Views.Tabbed
+Imports DevExpress.XtraBars.Docking2010
+Imports DevExpress.XtraBars.Docking
+Imports DevExpress.XtraRichEdit
 Imports DevExpress.XtraBars.Docking2010.Views
 
 Namespace ChildStandaloneForm
@@ -14,15 +21,15 @@ Namespace ChildStandaloneForm
 
         Public Sub New()
             InitializeComponent()
-            tabbedView1.FloatingDocumentContainer = FloatingDocumentContainer.DocumentsHost
+            tabbedView1.FloatingDocumentContainer = DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.DocumentsHost
         End Sub
 
         Private docs As List(Of BaseDocument) = New List(Of BaseDocument)()
 
-        Private Sub tabbedView1_QueryControl(ByVal sender As Object, ByVal e As QueryControlEventArgs)
+        Private Sub tabbedView1_QueryControl(ByVal sender As Object, ByVal e As DevExpress.XtraBars.Docking2010.Views.QueryControlEventArgs)
             Dim wb As MyBrowser = New MyBrowser()
             wb.Dock = DockStyle.Fill
-            AddHandler wb.TitleChanged, AddressOf wb_TitleChanged
+            wb.TitleChanged += AddressOf wb_TitleChanged
             docs.Add(e.Document)
             e.Control = wb
         End Sub
@@ -36,9 +43,9 @@ Namespace ChildStandaloneForm
         End Function
 
         Private Sub wb_TitleChanged(ByVal sender As Object, ByVal e As EventArgs)
-            tabbedView1.ActiveDocument.Caption = TryCast(tabbedView1.ActiveDocument.Control, MyBrowser).Title
-            Dim activeFloatDoc As Document = FindDocument(sender) ' for floating documents
-            If activeFloatDoc IsNot Nothing Then activeFloatDoc.Caption = TryCast(sender, MyBrowser).Title
+            Me.tabbedView1.ActiveDocument.Caption = TryCast(Me.tabbedView1.ActiveDocument.Control, ChildStandaloneForm.MyBrowser).Title
+            Dim activeFloatDoc As Document = Me.FindDocument(sender) ' for floating documents
+            If activeFloatDoc IsNot Nothing Then activeFloatDoc.Caption = TryCast(sender, ChildStandaloneForm.MyBrowser).Title
         End Sub
     End Class
 End Namespace
